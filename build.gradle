@@ -17,7 +17,7 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-mustache')
 
-    testImplementation ('org.springframework.boot:spring-boot-starter-terst')
+    testImplementation ('org.springframework.boot:spring-boot-starter-test')
 }
 
 test {
