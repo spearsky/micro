@@ -20,6 +20,16 @@ import java.util.List;
     posts : Insert / Update 구분하는 방법
         Insert : id가 없으면 글 등록
         Update : id가 있으면 글 수정으로 판단
+
+1-13
+    디비 쿼리가 제대로 수행되는지 확인 할 방법이 없다.
+    이를 해결하는 방법은, property 설정으로 가능한데
+    src/main/resources/application.properties 파일에 속석을 설정한다.
+
+
+    cf. CURL
+        curl http://www.daum.net
+
  */
 
 @ExtendWith(SpringExtension.class)
