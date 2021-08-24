@@ -30,6 +30,8 @@ import org.springframework.web.bind.annotation.RestController;
             롬복 사용을 위해 gradle 에 추가
  */
 
+// http://localhost:8080/hello/dto
+
 @RestController
 public class HelloController {
     @GetMapping("/hello")
