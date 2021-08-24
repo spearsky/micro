@@ -8,9 +8,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /*
 1-6 Hellocontroller 의 테스트 모듈을 만들때는 뒤에 Test라는 이름을 갖는다.
@@ -52,5 +52,27 @@ public class HelloControllerTest {
                 .andExpect(content().string(hello));
 
 
+    }
+
+    /*
+    jsonPath()
+        JSON 응답값을 필드별로 검증하는 메소드
+        $단위로 변수를 구분하고, 앞에 Dot(.)을 써준다. 예: $.name
+
+        Application 을 실행(전체실행)
+        주소창에 http://localhost:8080/hello/dto?name=이순신&age=123
+     */
+
+    @Test
+    public void helloDtoTest() throws Exception {
+        String name = "HongKildong";
+        int age = 12;
+
+        mvc.perform(get("/hello/dto")
+                    .param("name", name)
+                    .param("age", String.valueOf(age)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is(name)))
+                .andExpect(jsonPath("$.age", is(age)));
     }
 }

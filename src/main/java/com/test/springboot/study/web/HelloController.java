@@ -1,6 +1,8 @@
 package com.test.springboot.study.web;
 
+import com.test.springboot.study.web.dto.HelloResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /*
@@ -30,12 +32,20 @@ import org.springframework.web.bind.annotation.RestController;
             롬복 사용을 위해 gradle 에 추가
  */
 
-// http://localhost:8080/hello/dto
+/*
+1-8 dto를 getter로 추가하는 방법
+    http://localhost:8080/hello/dto?name=홍길동&age=99
+*/
 
 @RestController
 public class HelloController {
     @GetMapping("/hello")
     public String hello(){
         return "hello";
+    }
+
+    @GetMapping("/hello/dto")
+    public HelloResponseDto helloDto(@RequestParam("name") String name, @RequestParam("age") int age) {
+        return new HelloResponseDto(name, age);
     }
 }
