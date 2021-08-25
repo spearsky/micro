@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 
 /*
 2-2 PostsService를 추가
+
+    Dto > Controller > service > Repository
  */
 
 @RequiredArgsConstructor
@@ -17,7 +19,7 @@ public class PostsService {
     private final PostsRepository postsRepository;
 
     @Transactional
-    public Long saver(PostsSaveRequestDto requestDto){
+    public Long save(PostsSaveRequestDto requestDto){
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 }

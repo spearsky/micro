@@ -21,9 +21,16 @@ import org.springframework.web.bind.annotation.RestController;
     그안에 PostsService 객체를 만들 예정(현재 이코드는 서비스(PostsService)가 없어서 에러)
  */
 
+/*
+2-3 단위테스트를 위해 PostsApiControllerTest 만들어야함
+    현재 : main.java.com.test.springboot.study.web.PostsApiController
+    테스트 : main.java.com.test.springboot.study.web.PostsApiControllerTest
+ */
+
 @RequiredArgsConstructor
 @RestController
 public class PostsApiController {
+
     private final PostsService postsService;
     
     @PostMapping("/api/v1/posts")
