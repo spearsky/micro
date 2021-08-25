@@ -46,7 +46,12 @@ public class PostsService {
     GetMapping, PostMapping
     Insert : PostMapping
     Update : PutMapping
-    SElect * : GetMapping
+    Select * : GetMapping
+
+    TODO:
+        Service에 update 기능이 추가 되었으니까,
+        단위 테스트에서 현재는 save()만 처리
+        여기에 update()기능도 단위 테스트 되어야 한다.
      */
     public Long update(Long id, PostsUpdateRequestDto requestDto){
         Posts posts = postsRepository
