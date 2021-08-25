@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /*
@@ -40,6 +41,7 @@ public class PostsRepositoryTest {
 
     @AfterEach
     public void cleanup() {
+        
         postsRepository.deleteAll();
     }
 
@@ -74,5 +76,30 @@ public class PostsRepositoryTest {
         Posts posts = postsList.get(0);
         assertThat(posts.getTitle()).isEqualTo(title);
         assertThat(posts.getContent()).isEqualTo(content);
+    }
+
+    /*
+    2-12 Auditing
+
+    단위테스트 확인후 성공했으면,
+    Application을 실행한 후
+    http://localhost:8080/h2-console 에 접속해서
+    Ports 테이블에 CreateDate, ModifiedDate 필드가 추가된 것을 확인
+     */
+    @Test
+    public void BaseTimeEntityRegister(){
+        LocalDateTime now = LocalDateTime.of(2021,8,25,16,10,22);
+        postsRepository.save(Posts
+                .builder()
+                        .title("title")
+                        .content("content")
+                        .author("author")
+                .build());
+        List<Posts> postsList = postsRepository.findAll();
+
+        Posts posts = postsList.get(0);
+
+        assertThat(posts.getCreateDate()).isAfter(now);
+        assertThat(posts.getModifiedDate()).isAfter(now);
     }
 }
