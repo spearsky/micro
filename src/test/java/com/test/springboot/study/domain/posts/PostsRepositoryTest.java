@@ -85,6 +85,18 @@ public class PostsRepositoryTest {
     Application을 실행한 후
     http://localhost:8080/h2-console 에 접속해서
     Ports 테이블에 CreateDate, ModifiedDate 필드가 추가된 것을 확인
+
+    2-13 Mustache 화면 구성
+        매우 간단한 템플릿 엔진
+        화면구성을 위한 틀을 만들어놓고, 데이터가 추가되어야하는 부분만 프로그램으로 채우는 방식
+        장점 : 문법이 매우 단순하다.
+              View 역할만 수행
+              InteliJ 에서는 plugins 로 간단하게 설치가능
+              Ctrl + Shift + A : plugins 검색 > mustache 설치
+
+              Mustache 를 사용하기 위해서는 bundle.gradle 에 추가해준다 >> sync
+
+              src > resource > templates > index.mustache
      */
     @Test
     public void BaseTimeEntityRegister(){
