@@ -21,6 +21,21 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/*
+2-4 HellocontrollerTest 에서는 @WebMvTest를 사용했는데
+    @WebMvcTest의 경우 JPA 기능이 작동하지 않기 때문에
+    Controller 등 외부 연동과 관련된 부분만 활성화 된다.
+    따라서, 지글처럼 JPA 기능까지 한번에 테스트 할 때는
+    @SpringBootTest와 TestRestTemplate 객체 사용한다.
+    현재 코드에서 postsRepository.findAll()을 통해
+    모든 데이터는 List Collector에 넣는 것을 확인할 수 있다.
+    맨 첫번째 데이터는 지금 넣는 데이터이기 때문에
+    지금 막 넣은 데이터와 첫번째 데이터가 같은지 확인
+
+    TODO
+    수정/
+ */
+
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PostsApiControllerTest {

@@ -1,5 +1,6 @@
 package com.test.springboot.study.domain.posts;
 
+import org.hibernate.result.Output;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /*
@@ -7,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface PostsRepository extends JpaRepository<Posts, Long> {
-    
+
 }
