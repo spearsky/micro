@@ -1,3 +1,23 @@
+2-11. JPA Auditing
+
+    JPA 감시, 글생성(Create), 글 변경된것을 감시한다.
+
+    domain/BaseTimeEntity 클래스를 만들어서, JPA 실시간 감사할수 있게 한다.
+
+1-13. 데이터 등록/수정/삭제 API
+
+    Service, Controller, RequestDto
+
+    개발 순서
+        Service -> Controller -> DTO 순으로 만드는 것이 일반적이다.
+
+        Service : DTO 객체를 받아서 저장하는 일
+        Controller : Service한테 save()를 요청
+        DTO -> Controller -> Service
+
+        실제 개발 순서
+        DTO -> Service -> Controller 순서대로 작업하면 될 거다.
+
 1-9. JPA (Java Persistence API : 자바 지속성 API)
 
     cf. MyBatis , SQL Mapper -SQL 쿼리 작업 증가하는 문제 발생

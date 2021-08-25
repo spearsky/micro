@@ -13,16 +13,22 @@ package com.test.springboot.study.domain.posts;
     @GeneratedValue : 키 생성성
  */
 
+import com.test.springboot.study.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/*
+2-11 JPA Auditing
+    Posts가 BaseTimeEntity 추상클래스를 상속만 받으면 시간관리된다.
+ */
+
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; //글번호
