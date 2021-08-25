@@ -44,6 +44,11 @@ public class Posts {
 
     /*
     2-7 Posts 에 update() 기능을 추가
+        이제 서비스에서도 update가 되도록 추가한다.
+        Repository에 업데이트를 할 수 있는 코드 확인을 해야 한다.
+        해야하는 절차.
+            update id O <------> save id x
+            update 수행하기 전에 id를 가지고 원본데이터를 찾는 일이 수행해야 함.
      */
 
     public void update(String title, String content){
