@@ -55,7 +55,8 @@ public class PostsService {
         단위 테스트에서 현재는 save()만 처리
         여기에 update()기능도 단위 테스트 되어야 한다.
      */
-    public Long update(Long id, PostsUpdateRequestDto requestDto){
+    @Transactional
+    public Long update(Long id, PostsUpdateRequestDto requestDto) {
         Posts posts = postsRepository
                 .findById(id)
                 .orElseThrow(()->new IllegalArgumentException("찾는 원본 게시글 없다. id =" + id));
@@ -63,7 +64,19 @@ public class PostsService {
         return id;
     }
 
-    public PostsResponseDto findById(Long id){
+    /*
+    3-9 delete 추가
+    Posts 에 delete 가 Controller 에 delete 등록
+     */
+    @Transactional
+    public void delete(Long id) {
+        Posts posts = postsRepository
+                .findById(id)
+                .orElseThrow(()->new IllegalArgumentException("찾는 원본 게시글 없다. id =" + id));
+        postsRepository.delete(posts);
+    }
+
+    public PostsResponseDto findById(Long id) {
         Posts entity = postsRepository
                 .findById(id)
                 .orElseThrow(()->new IllegalArgumentException("찾는 원본 게시글 없다. id =" + id));

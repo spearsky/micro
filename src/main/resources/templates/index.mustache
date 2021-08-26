@@ -34,10 +34,18 @@
         <div class="col-3">수정일</div>
     </div>
 
+    <!--
+        3-7
+        title을 클릭했을 원본글을 가지고와서 내용을 보여주는 작업을 해야한다.
+        그런데 시간관계상, 바로 글 수정으로 가보겠습니다.
+        수정, 내용보기랑 같다. 원본 데이터를 가져와서 화면에 뿌려주는 일을 하기 때문이다.
+        원본글을 가져오기 위해서는 id가 있어야 한다.
+    -->
+
     {{#posts}}
         <div class="row rowLine">
             <div class="col-1">{{id}}</div>
-            <div class="col-6">{{title}}</div>
+            <div class="col-6"><a href="/posts/update/{{id}}">{{title}}</a></div>
             <div class="col-2">{{author}}</div>
             <div class="col-3">{{modifiedDate}}</div>
         </div>

@@ -1,10 +1,12 @@
 package com.test.springboot.study.web;
 
 import com.test.springboot.study.service.PostsService;
+import com.test.springboot.study.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /*
 3-1 IndexController
@@ -26,15 +28,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 3-6 Index 로 데이터를 전달해줘야한다.
     이를 위해서 index() 함수를 수정해 줘야 한다.
+
+3-8 postsUpdate() 기능 추가
  */
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
-    private PostsService postsService;
+    private final PostsService postsService;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model) {
         model.addAttribute("posts", postsService.findAllDesc());
         return "index";
     }
@@ -42,5 +46,12 @@ public class IndexController {
     @GetMapping("/posts/save")
     public String postsSave(){
         return "posts-save";
+    }
+
+    @GetMapping("/posts/update/{id}")
+    public String postsUpdate(@PathVariable Long id, Model model){
+        PostsResponseDto dto = postsService.findById(id);
+        model.addAttribute("posts", dto);
+        return "posts-update";
     }
 }
