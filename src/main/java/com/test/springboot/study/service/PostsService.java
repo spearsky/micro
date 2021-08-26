@@ -2,14 +2,16 @@ package com.test.springboot.study.service;
 
 import com.test.springboot.study.domain.posts.Posts;
 import com.test.springboot.study.domain.posts.PostsRepository;
+import com.test.springboot.study.web.dto.PostsListResponseDto;
 import com.test.springboot.study.web.dto.PostsResponseDto;
 import com.test.springboot.study.web.dto.PostsSaveRequestDto;
 import com.test.springboot.study.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.parser.Entity;
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 2-2 PostsService를 추가
@@ -66,5 +68,22 @@ public class PostsService {
                 .findById(id)
                 .orElseThrow(()->new IllegalArgumentException("찾는 원본 게시글 없다. id =" + id));
         return new PostsResponseDto(entity);
+    }
+
+    /*
+    3-6 List Collection  findAllDesc()순으로 채운다.
+        .map(PostsListResponseDto::new) 람다식 표현은
+        .map(posts->new PostsListResposeDto(posts)) 와 완전일치하는 문법
+        import Transaction을 javax -> springframework으로 변경
+        javax의 Transaction은 Option메소드를 허용하지 않는다.
+        조회기능만 수행하기 때문에 성능향상을 위해서 변경해주는 것이 바람직하다.
+     */
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository
+                .findAllDesc()
+                .stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 }

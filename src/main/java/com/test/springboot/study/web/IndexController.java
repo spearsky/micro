@@ -1,6 +1,9 @@
 package com.test.springboot.study.web;
 
+import com.test.springboot.study.service.PostsService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /*
@@ -20,12 +23,19 @@ import org.springframework.web.bind.annotation.GetMapping;
     JS, stylesheet 등을 폴더 포함시키기 위해서는 디렉토리를 만들어야 한다.
     JS : resources/static/js/app/index.js
     stylesheet : resources/static/css/style.css
+
+3-6 Index 로 데이터를 전달해줘야한다.
+    이를 위해서 index() 함수를 수정해 줘야 한다.
  */
+@RequiredArgsConstructor
 @Controller
 public class IndexController {
 
+    private PostsService postsService;
+
     @GetMapping("/")
-    public String index(){
+    public String index(Model model){
+        model.addAttribute("posts", postsService.findAllDesc());
         return "index";
     }
 
