@@ -6,6 +6,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+/*
+3-13 현재는 에러가 나도 무방
+    로그인을 했을 때 기본 롤을 설정하는 기능이 가장 중요한 기능
+
+    config.auth.CustomOAuth2UserService
+ */
 @RequiredArgsConstructor
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
