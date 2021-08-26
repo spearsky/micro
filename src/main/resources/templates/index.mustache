@@ -3,9 +3,33 @@
         <div class="col">bootstrap test</div>
     </div>
 
+    <!--
+        3-11. 미리 타이핑
+        구글 인증정보를 이용해서 로그인이 된 경우와 되지 않은 경우를 구분해서
+        화면을 구성한다.
+        로그인이 안된 경우 (구글로그인) 버튼을 하나 만들고
+        로그인이 된 경우에는 (홍길동 로그아웃) 버튼을 만든다.
+        /logout은 우리가 관여하는 코드가 아니고, oauth2에서 자동으로 로그아웃 시켜주는 영역
+        /oauth2/authorization/google 도 로그아웃과 마찬가지로 스프링 시큐리티에서 기본으로 제공해주는 영역이어서
+        별도로 Controller 만들지 않는다.
+        /domain/user 패키지
+            Role, User, UserRespository
+    -->
+
     <div class="row rowLine">
         <div class="col">
             <button class="btn btn-primary" onclick="location.href='/posts/save'"><span class="material-icons">mode_edit</span> 글쓰기</button>
+        </div>
+        <div class="col text-right">
+            <!--로그인이 된 경우-->
+            {{#user_name}}
+                <button type="button" class="btn btn-success" onclick="location.href='/logout'"> {{username}} 로그아웃</button>
+            {{/user_name}}
+
+            <!--로그인이 안된 경우-->
+            {{^user_name}}
+                <button type="button" class="btn btn-primary" onclick="location.href='/oauth2/authorization/google'">Google Login</button>
+            {{/user_name}}
         </div>
     </div>
 
