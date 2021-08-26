@@ -1,3 +1,6 @@
+3-1 IndexController.java
+    study.web.IndexController.java
+
 2-11. JPA Auditing
 
     JPA 감시, 글생성(Create), 글 변경된것을 감시한다.
