@@ -21,6 +21,8 @@ import java.util.Collections;
 3-13 CustomOAuth2UserService
     에러가 나도 상관없다.
     OAuthAttributes 클래스가 아직 만들어지 않았다.
+
+
     conf.auth.dto/OAuthAttributes.java 만들러 간다.
  */
 

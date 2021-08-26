@@ -22,14 +22,14 @@
         </div>
         <div class="col text-right">
             <!--로그인이 된 경우-->
-            {{#user_name}}
-                <button type="button" class="btn btn-success" onclick="location.href='/logout'"> {{username}} 로그아웃</button>
-            {{/user_name}}
+            {{#userName}}
+                <button type="button" class="btn btn-success" onClick="location.href='/logout'"> {{userName}} 로그아웃</button>
+            {{/userName}}
 
             <!--로그인이 안된 경우-->
-            {{^user_name}}
-                <button type="button" class="btn btn-primary" onclick="location.href='/oauth2/authorization/google'">Google Login</button>
-            {{/user_name}}
+            {{^userName}}
+                <button type="button" class="btn btn-primary" onClick="location.href='/oauth2/authorization/google'">Google Login</button>
+            {{/userName}}
         </div>
     </div>
 

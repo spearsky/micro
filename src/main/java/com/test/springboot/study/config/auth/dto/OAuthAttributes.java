@@ -9,6 +9,9 @@ import java.util.Map;
 
 /*
 3-13 인증에 관련된 속성정보
+
+    로그인에 관련된 세션처리 기능 추가
+    conf.auth.dto.SessionUser 파일 생성
  */
 
 @Getter

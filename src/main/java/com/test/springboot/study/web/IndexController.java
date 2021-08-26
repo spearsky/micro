@@ -1,5 +1,6 @@
 package com.test.springboot.study.web;
 
+import com.test.springboot.study.config.auth.dto.SessionUser;
 import com.test.springboot.study.service.PostsService;
 import com.test.springboot.study.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import javax.servlet.http.HttpSession;
 
 /*
 3-1 IndexController
@@ -30,16 +33,28 @@ import org.springframework.web.bind.annotation.PathVariable;
     이를 위해서 index() 함수를 수정해 줘야 한다.
 
 3-8 postsUpdate() 기능 추가
+
+3-15 google login  기능 추가
+    로그인을 추가하기 위해서는 Session 처리해주어야 한다.
+
+    세션에 user 정보가 있으면(로그인 되었다는 의미) 사용자 정보중 userName 으로 값을 index로 보낸다.
  */
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
 
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("posts", postsService.findAllDesc());
+
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        if(user != null){
+            model.addAttribute("userName", user.getName());
+            //model.addAttribute("email", user.getEmail());
+        }
         return "index";
     }
 
