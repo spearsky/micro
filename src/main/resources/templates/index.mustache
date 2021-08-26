@@ -9,5 +9,38 @@
         </div>
     </div>
 
+    <!--
+        3-5 글 목록보기
+        글쓰기가 성공한 후, 첫화면으로 돌아오니까,
+        화면 하단에 현재까지 등록된 글의 목록을 보여주는 부분을 작성해야 한다.
+
+        번호    제목                                   작성자         수정일
+        1      test                                  tester        2021-8-25
+
+        #posts : Collection List 를 for(), while() 처럼 출력해준다
+        정확히는 posts 라는 List 순회한다는 것을 의미한다
+        아직은 posts 를 만들지 않았다.(목록에 현재 보여주지는 못한다)
+
+        title 에 링크를 매달 예정
+        /posts/update/아이디
+
+        PostsReposityry 에서 posts객체를 만들어서 List로 반환하는 객체를 만들어야한다.
+    -->
+
+    <div class="row rowLine">
+        <div class="col-1">번호</div>
+        <div class="col-6">제목</div>
+        <div class="col-2">작성자</div>
+        <div class="col-3">수정일</div>
+    </div>
+
+    {{#posts}}
+        <div class="row rowLine">
+            <div class="col-1">{{id}}</div>
+            <div class="col-6">{{title}}</div>
+            <div class="col-2">{{author}}</div>
+            <div class="col-3">{{modifiedDate}}</div>
+        </div>
+    {{/posts}}
 
 {{>layout/footer}}
