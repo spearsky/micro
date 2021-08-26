@@ -1,3 +1,8 @@
+3-10 구글 인증하기
+    resource/application.properties 파일에 정보를 추가해줘야 한다.
+    resource/application-oauth.properties 파일을 만들고,
+    구글인정번호, 비번등을 적어야 합니다.
+
 3-2 mustache 파일을 분리
     header, body, tail 분리예정
     resource/templates/layout/header.mustache
