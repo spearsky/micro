@@ -1,3 +1,8 @@
+3-2 mustache 파일을 분리
+    header, body, tail 분리예정
+    resource/templates/layout/header.mustache
+                              tail.mustache
+
 3-1 IndexController.java
     study.web.IndexController.java
 
