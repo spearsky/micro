@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
     디렉토리 구조가 같아야한다.
 
 3-3 /posts/save 링크(get)를 만났을 때 처리할 매핑 정보를 추가해준다
+
+3-4 글쓰기 action 등을 세팅하지 않고 JS로 처리를 해보겠다.
+    JS, stylesheet 등을 폴더 포함시키기 위해서는 디렉토리를 만들어야 한다.
+    JS : resources/static/js/app/index.js
+    stylesheet : resources/static/css/style.css
  */
 @Controller
 public class IndexController {

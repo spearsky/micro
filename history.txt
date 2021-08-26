@@ -87,7 +87,7 @@
      압축을 풀고 폴더명을 gradle로 변경
      d:\gradle로 폴더를 이동
      환경변수에 d:\grale\bin 추가
-0-2. 자바 1.8tjfcl
+0-2. 자바 1.8설치
 0-3. toolbox 설치
      IntelliJ Community version 설치
      메모리는 시스템 메모리의 약 1/4
