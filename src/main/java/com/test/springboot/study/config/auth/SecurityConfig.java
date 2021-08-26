@@ -1,5 +1,6 @@
 package com.test.springboot.study.config.auth;
 
+import com.test.springboot.study.config.auth.dto.CustomOAuth2UserService;
 import com.test.springboot.study.domain.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
